@@ -1,0 +1,168 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Slab", sans-serif;
+}
+body {
+  background-color: #0f172a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+.hero {
+  text-align: center;
+  color: #f8f8f8;
+  margin-bottom: 30px;
+}
+.hero h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+h1 span {
+  color: #772ce8;
+}
+.subtitle {
+  font-size: 18px;
+  color: #60a5fa;
+}
+#logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 20px;
+}
+.descricao {
+  max-width: 400px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 auto;
+
+}
+.descricao-conversor {
+  font-size: 16px;
+  color: #38bdf8;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 400px;
+}
+.inout-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.invert-button {
+  width: 100%;
+  background: #ffffff;
+  border: none;
+  font-size: 26px;
+  color: #772ce8;
+  cursor: pointer;
+  margin: 8px auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition:transform 0.2s ease-in-out;
+  align-self: center;
+  justify-content: center;
+  display: flex;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease; 
+}
+.invert-button:hover {
+  background-color: #7e22ce; 
+  color: #ffffff;
+  transform: scale(1.15);
+}
+label {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+label b {
+  color: #0f172a;
+}
+select,input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  font-size: 18px;
+  color: #334155;
+  outline: none;
+  background-color: #ffffff;
+  margin-top: 6px;
+}
+#convertButton {
+  width: 100%;
+  background-color: #772ce8;
+  font-weight: bold;
+  font-size: 18px;
+  color: #ffffff;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s ease;
+}
+#convertButton:hover {
+  background-color: #5f1fc4;
+}
+.resultado .box {
+  border: 1px solid #772ce8;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+.moeda-bloco {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.moeda-bloco img {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    margin-bottom: 8px;
+}
+.nome-moeda {
+    font-size: 16px;
+    color: #64748b;
+}
+.valor-moeda {
+    font-size: 20px;
+    color: #0f172a;
+    font-weight: bold;
+    margin-top: 2px;
+}
+.seta {
+    font-size: 24px;
+    color: #772ce8;
+    margin: 20px 0;
+    font-weight: bold;
+    text-align: center;
+}
+#ultimaAtualizacao {
+    font-size: 12px;
+    color: #9ca3af;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: normal;
+}

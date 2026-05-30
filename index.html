@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Slab:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="./assets/css/style.css"
+    />
+    <title>SmartCâmbio</title>
+  </head>
+  <body>
+    <section class="hero">
+      <h1>💱Smart<span>Câmbio</span></h1>
+      <p class="subtitle">Conversor de moedas em tempo real.</p>
+    </section>
+    <img
+      id="logo"
+      src="./assets/images/logo.gif"
+      alt="Logo do SmartCâmbio"
+    />
+
+    <p class="descricao">
+      Bem-vindo ao <b>SmartCâmbio</b>, o seu conversor de moedas confiável e
+      fácil de usar!
+      <br />
+      Converta entre Real, Dólar, Euro, Libra e Bitcoin em segundos.
+    </p>
+
+    <p class="descricao-conversor">
+      Converta suas moedas de forma rápida e fácil!
+    </p>
+
+    <div class="container">
+      <main>
+        <div class="input-group">
+          <label> Moeda de origem </label>
+          <select id="moedaOrigem">
+            <option value="BRL">R$ Real Brasileiro</option>
+            <option value="USD">US$ Dólar Americano</option>
+            <option value="EUR">€ Euro</option>
+            <option value="GBP">£ Libra Esterlina</option>
+            <option value="BTC">₿ Bitcoin</option>
+          </select>
+        </div>
+
+        <button type="button" class="invert-button">⇅</button>
+
+        <div class="input-group">
+          <label> Moeda de destino </label>
+
+          <select id="moedaDestino">
+            <option value="BRL">R$ Real Brasileiro</option>
+            <option value="USD">US$ Dólar Americano</option>
+            <option value="EUR">€ Euro</option>
+            <option value="GBP">£ Libra Esterlina</option>
+            <option value="BTC">₿ Bitcoin</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="valor">Valor</label>
+          <input
+            type="number"
+            id="valor"
+            placeholder="R$ 10.000,00"
+          />
+        </div>
+
+        <button type="button" id="convertButton">Converter</button>
+
+        <div
+          id="resultado"
+          class="resultado box"
+        >
+          <div class="moeda-bloco">
+            <img
+              src="./assets/images/real.png"
+              id="badeiraorigem"
+              alt="Bamdeiora Origem"
+            />
+            <span
+              class="nome-moeda"
+              id="nomeOrigem"
+              >Real</span
+            >
+            <output
+              class="valor-moeda"
+              id="valorOriginal"
+              >R$ 0,00</output
+            >
+          </div>
+
+          <div class="seta">⬇</div>
+
+          <div class="moeda-bloco">
+            <img
+              src="./assets/images/dolar.png"
+              id="bandeiradestino"
+              alt="Bandeira Destino"
+            />
+            <span
+              class="nome-moeda"
+              id="nomeDestino"
+              >Dólar Americano
+            </span>
+            <output
+              class="valor-moeda"
+              id="valorConvertido"
+              >R$ 0,00</output
+            >
+            <p id="ultimaAtualizacao">Taxa de atualização em: 29/05/2026 21:05</p>
+            
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+
+  <script src="./ "></script>
+</html>
