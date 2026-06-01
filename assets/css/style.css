@@ -1,71 +1,112 @@
+/* 1. CONFIGURAÇÕES GERAIS */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Roboto Slab", sans-serif;
 }
+
 body {
   background-color: #0A0F14;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
   padding: 40px 20px;
 }
+
+/* 2. TOPO DO SITE (Centralizado) */
+.header-site {
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto 30px auto;
+  width: 100%;
+}
+
 .hero {
   text-align: center;
   color: #f8f8f8;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
+
 .hero h1 {
   font-size: 36px;
   margin-bottom: 10px;
 }
+
 h1 span {
   color: #772ce8;
 }
+
 .subtitle {
   font-size: 18px;
   color: #60a5fa;
 }
+
 #logo {
   width: 120px;
   height: auto;
   margin-bottom: 20px;
+  display: block;
+  margin: 0 auto 20px auto;
 }
+
 .descricao {
-  max-width: 400px;
+  max-width: 500px;
   text-align: center;
   color: #94a3b8;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.6;
   margin: 0 auto;
-
 }
+
 .descricao-conversor {
   font-size: 16px;
   color: #38bdf8;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
+
+/* ================= 3. ESTRUTURA DO DASHBOARD (Grid de Colunas) ================= */
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr; /* Esquerda (Conversor/Tabela) maior que a Direita */
+  gap: 30px;                       /* Espaço entre as duas colunas */
+  max-width: 1200px;               /* Limita o esticamento em monitores grandes */
+  margin: 0 auto;                  /* Centraliza o painel inteiro na tela */
+  align-items: start;              /* Mantém os blocos alinhados pelo topo */
+}
+
+/* Containers de agrupamento das colunas */
+.coluna-principal {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Espaço ordenado entre o Conversor e a Tabela */
+  width: 100%;
+}
+
+.coluna-lateral {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Espaço ordenado entre a Troca Rápida e as Notícias */
+  width: 100%;
+}
+
+/* ================= 4. CARD DO CONVERSOR (Coluna Principal) ================= */
 .container {
-  background-color:#12181F;
+  background-color: #12181F;
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
   width: 100%;
-  max-width: 400px;
 }
-.inout-group {
+
+.input-group {
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
   width: 100%;
 }
+
 .invert-button {
-  width: 100%;
-  background: #ffffff;
+  background: #0f172a;
   border: none;
   font-size: 26px;
   color: #00E5FF;
@@ -74,53 +115,58 @@ h1 span {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  transition:transform 0.2s ease-in-out;
   align-self: center;
   justify-content: center;
   display: flex;
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease; 
+  align-items: center;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
+
 .invert-button:hover {
   background-color: #00E5FF;
   color: #ffffff;
   transform: scale(1.15);
 }
+
 label {
   font-size: 14px;
   color: #64748b;
   margin-bottom: 6px;
 }
-label b {
-  color: #0f172a;
-}
-select,input {
+
+select, input {
   width: 100%;
   padding: 14px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid #232936; /* Ajustado para borda sutil escura */
   border-radius: 14px;
-  font-size: 18px;
-  color: #334155;
+  font-size: 16px;
+  color: #ffffff;
   outline: none;
-  background-color: #ffffff;
+  background-color: #0f172a;
   margin-top: 6px;
 }
+
 #convertButton {
   width: 100%;
   background-color: #00F0FF;
   font-weight: bold;
   font-size: 18px;
-  color: #ffffff;
+  color: #0A0F14; /* Texto escuro melhora o contraste com o ciano */
   padding: 16px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   margin-top: 10px;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
+
 #convertButton:hover {
-  background-color: #5f1fc4;
+  background-color: #772ce8;
+  color: #ffffff;
 }
-.resultado .box {
+
+/* Bloco de Resultado */
+.resultado.box {
   border: 1px solid #772ce8;
   border-radius: 12px;
   padding: 20px;
@@ -130,39 +176,234 @@ select,input {
   align-items: center;
   gap: 12px;
   width: 100%;
+  background-color: #0f172a;
 }
+
 .moeda-bloco {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 .moeda-bloco img {
-    width: 44px;
-    height: 44px;
-    object-fit: cover;
-    margin-bottom: 8px;
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  margin-bottom: 8px;
 }
+
 .nome-moeda {
-    font-size: 16px;
-    color: #64748b;
+  font-size: 16px;
+  color: #64748b;
 }
+
 .valor-moeda {
-    font-size: 20px;
-    color: #0f172a;
-    font-weight: bold;
-    margin-top: 2px;
+  font-size: 20px;
+  color: #00F0FF;
+  font-weight: bold;
+  margin-top: 2px;
 }
+
 .seta {
-    font-size: 24px;
-    color: #772ce8;
-    margin: 20px 0;
-    font-weight: bold;
-    text-align: center;
+  font-size: 24px;
+  color: #00F0FF;
+  margin: 10px 0;
+  font-weight: bold;
+  text-align: center;
 }
+
 #ultimaAtualizacao {
-    font-size: 12px;
-    color: #9ca3af;
-    text-align: center;
-    margin-top: 20px;
-    font-weight: normal;
+  font-size: 12px;
+  color: #9ca3af;
+  text-align: center;
+  margin-top: 15px;
 }
+
+/* ================= 5. TABELA DE COTAÇÕES (Coluna Principal) ================= */
+.tabela-cotacoes {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #121620;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tabela-cotacoes th, .tabela-cotacoes td {
+  border-bottom: 1px solid #232936;
+  padding: 16px 20px;
+  text-align: left;
+}
+
+.tabela-cotacoes th {
+  background-color: #1a1f2c;
+  color: #00F0FF;
+  font-size: 15px;
+}
+
+.tabela-cotacoes td {
+  background-color: #12181F;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* Cores de variação de taxas na tabela */
+.variacao.positiva {
+  color: #10b981; /* Verde moderno */
+}
+.variacao.negativa {
+  color: #ef4444; /* Vermelho moderno */
+}
+
+/* ================= 6. CARD DE TROCA RÁPIDA (Coluna Lateral) ================= */
+.quick-shortcut-swap {
+  background-color: #12181F; /* Igualado ao container para harmonia visual */
+  padding: 24px;
+  border-radius: 15px;
+  width: 100%;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.shortcut-title {
+  font-size: 18px;
+  color: #00F0FF;
+  margin-bottom: 20px;
+  text-align: left; /* Alinhado à esquerda como no modelo */
+  font-weight: 600;
+}
+
+.shortcut-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #0f172a;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border: 1px solid #1e293b;
+}
+
+.shortcut-item:last-child {
+  margin-bottom: 0;
+}
+
+.shortcut-item:hover {
+  background-color: #1e293b;
+}
+
+.shortcut-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Badge em formato circular sutil */
+.coin-badge {
+  background-color: #1e293b;
+  color: #00F0FF;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.shortcut-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.coin-sub-name {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.shortcut-icon {
+  font-size: 1.2rem;
+  color: #64748b;
+}
+
+.shortcut-item:hover .shortcut-icon {
+  color: #00F0FF;
+}
+
+/* ================= 7. SEÇÃO DE NOTÍCIAS (Coluna Lateral) ================= */
+.noticias {
+  background-color: #12181F;
+  padding: 24px;
+  border-radius: 15px;
+  width: 100%;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.noticias h2 {
+  font-size: 18px;
+  color: #00F0FF;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.noticia {
+  margin-bottom: 20px;
+  border-bottom: 1px dashed #232936;
+  padding-bottom: 15px;
+}
+
+.noticia:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.noticia img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.noticia h3 {
+  font-size: 15px;
+  color: #ffffff;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.noticia p {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* ================= 8. RESPONSIVIDADE (Telas menores) ================= */
+@media (max-width: 900px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr; /* Quebra as colunas, empilhando-as em tablets e celulares */
+    gap: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 20px 10px;
+  }
+  .hero h1 {
+    font-size: 28px;
+  }
+  .subtitle {
+    font-size: 16px;
+  }
+  .container {
+    padding: 20px;
+  }
+  .tabela-cotacoes th, .tabela-cotacoes td {
+    padding: 12px 10px;
+    font-size: 13px;
+  }
+}
+
+

@@ -28,171 +28,192 @@
 
   <body>
 
-    <section class="hero">
-      <h1>💱Smart<span>Câmbio</span></h1>
-      <p class="subtitle">Conversor de moedas em tempo real.</p>
-    </section>
+    <!-- Topo do Site (Fica centralizado acima das colunas) -->
+    <header class="header-site">
+      <section class="hero">
+        <h1>💱Smart<span>Câmbio</span></h1>
+        <p class="subtitle">Conversor de moedas em tempo real.</p>
+      </section>
 
-    <img id="logo" src="./assets/images/logo.gif" alt="Logo do SmartCâmbio"/>
+      <img id="logo" src="./assets/images/logo.gif" alt="Logo do SmartCâmbio"/>
 
-    <p class="descricao">
-      Bem-vindo ao <b>SmartCâmbio</b>, o seu conversor de moedas confiável e
-      fácil de usar!
-      <br />
-      Converta entre Real, Dólar, Euro, Libra e Bitcoin em segundos.
-    </p>
+      <p class="descricao">
+        Bem-vindo ao <b>SmartCâmbio</b>, o seu conversor de moedas confiável e fácil de usar!
+        <br />
+        Converta entre Real, Dólar, Euro, Libra e Bitcoin em segundos.
+      </p>
+    </header>
 
-    <p class="descricao-conversor">
-      Converta suas moedas de forma rápida e fácil!
-    </p>
-
-    <div class="container">
-      <main>
-        <div class="input-group">
-          <label> Moeda de origem </label>
-          <select id="moedaOrigem">
-            <option value="BRL">R$ Real Brasileiro</option>
-            <option value="USD">US$ Dólar Americano</option>
-            <option value="EUR">€ Euro</option>
-            <option value="GBP">£ Libra Esterlina</option>
-            <option value="BTC">₿ Bitcoin</option>
-          </select>
-        </div>
-
-        <button type="button" class="invert-button">⇅</button>
-
-        <div class="input-group">
-          <label> Moeda de destino </label>
-
-          <select id="moedaDestino">
-            <option value="BRL">R$ Real Brasileiro</option>
-            <option value="USD">US$ Dólar Americano</option>
-            <option value="EUR">€ Euro</option>
-            <option value="GBP">£ Libra Esterlina</option>
-            <option value="BTC">₿ Bitcoin</option>
-          </select>
-        </div>
-
-        <div class="input-group">
-          <label for="valor">Valor</label>
-          <input type="number" id="valor" placeholder="R$ 10.000,00"/>
-        </div>   
-           
-        <button type="button" id="convertButton">Converter</button>  
+    <!-- CONTAINER DO DASHBOARD (Onde a mágica das colunas acontece) -->
+    <div class="dashboard-layout">
+      
+      <!-- ================= COLUNA DA ESQUERDA ================= -->
+      <main class="coluna-principal">
         
-        <div id="resultado"class="resultado box" >
-          <div class="moeda-bloco">
-            <img
-              src="./assets/images/real.png"
-              id="badeiraorigem"
-              alt="Bamdeiora Origem"
-            />
-            <span
-              class="nome-moeda"
-              id="nomeOrigem"
-              >Real</span
-            >
-            <output class="valor-moeda" id="valorOriginal">R$ 0,00</output>
-          </div>  
+        <!-- Card do Conversor Principal -->
+        <div class="container">
+          <p class="descricao-conversor">
+            Converta suas moedas de forma rápida e fácil!
+          </p>
 
-          <div class="seta">⬇</div>
+          <div class="input-group">
+            <label> Moeda de origem </label>
+            <select id="moedaOrigem">
+              <option value="BRL">R$ Real Brasileiro</option>
+              <option value="USD">US$ Dólar Americano</option>
+              <option value="EUR">€ Euro</option>
+              <option value="GBP">£ Libra Esterlina</option>
+              <option value="BTC">₿ Bitcoin</option>
+            </select>
+          </div>
+
+          <button type="button" class="invert-button">⇅</button>
+
+          <div class="input-group">
+            <label> Moeda de destino </label>
+            <select id="moedaDestino">
+              <option value="BRL">R$ Real Brasileiro</option>
+              <option value="USD">US$ Dólar Americano</option>
+              <option value="EUR">€ Euro</option>
+              <option value="GBP">£ Libra Esterlina</option>
+              <option value="BTC">₿ Bitcoin</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="valor">Valor</label>
+            <input type="number" id="valor" placeholder="R$ 10.000,00"/>
+          </div>   
+            
+          <button type="button" id="convertButton">Converter</button>  
+          
+          <div id="resultado" class="resultado box" >
+            <div class="moeda-bloco">
+              <img src="./assets/images/real.png" id="badeiraorigem" alt="Bandeira Origem"/>
+              <span class="nome-moeda" id="nomeOrigem">Real</span>
+              <output class="valor-moeda" id="valorOriginal">R$ 0,00</output>
+            </div>  
+
+            <div class="seta">⬇</div>
 
             <div class="moeda-bloco">
               <img src="./assets/images/dolar.png" id="bandeiradestino" alt="Bandeira Destino"/>
-              <span bclass="nome-moeda" id="nomeDestino">Dólar Americano</span>
-              <output class="valor-moeda" id="valorConvertido">R$ 0,00</output>
+              <span class="nome-moeda" id="nomeDestino">Dólar Americano</span>
+              <output class="valor-moeda" id="valorConvertido">$ 0,00</output>
               <p id="ultimaAtualizacao">Taxa de atualização em: 29/05/2026 21:05</p>
             </div> 
-        </div>
-
-      <div class="quick-swao-shortcuts">
-        <h4 class="shortcut-title">Troca Rápida</h4>
-
-        <div class="shortcut-item" data-origem="BTC" data-destino="USD">
-          <div shortcut-left>
-            <div class="coin-badge">BTC</div>
-            <div class="shortcut-info">
-              <span class="coin-main-name">Bitcoin</span>
-              <span class="coin-sub-name">Para USD</span>
-            </div>
           </div>
-          <div class="shortcut-icon">⇅</div>
         </div>
-      </div>
+
+        <!-- Tabela de Cotações -->
+        <table class="tabela-cotacoes">
+          <thead>
+            <tr>
+              <th>Moeda</th>
+              <th>Cotação Atual</th>
+              <th>Variação 24h</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Dólar Americano (USD)</td>
+              <td>R$ 5,25</td>
+              <td class="variacao positiva">+0,75%</td>
+            </tr>
+            <tr>
+              <td>Euro (EUR)</td>
+              <td>R$ 6,10</td>
+              <td class="variacao negativa">-0,50%</td>
+            </tr>
+            <tr>
+              <td>Libra Esterlina (GBP)</td>
+              <td>R$ 7,20</td>
+              <td class="variacao positiva">+1,20%</td>
+            </tr>
+            <tr>
+              <td>Bitcoin (BTC)</td>
+              <td>R$ 250.000,00</td>
+              <td class="variacao positiva">+5,00%</td>
+            </tr>
+          </tbody>
+        </table>
 
       </main>
-    </div>
 
-    <table class="tabela-cotacoes">
-      <thead>
-        <tr>
-          <th>Moeda</th>
-          <th>Cotação Atual</th>
-          <th>Variação 24h</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Dólar Americano (USD)</td>
-          <td>R$ 5,25</td>
-          <td class="variacao positiva">+0,75%</td>
-        </tr>
-        <tr>
-          <td>Euro (EUR)</td>
-          <td>R$ 6,10</td>
-          <td class="variacao negativa">-0,50%</td>
-        </tr>
-        <tr>
-          <td>Libra Esterlina (GBP)</td>
-          <td>R$ 7,20</td>
-          <td class="variacao positiva">+1,20%</td>
-        </tr>
-        <tr>
-          <td>Bitcoin (BTC)</td>
-          <td>R$ 250.000,00</td>
-          <td class="variacao positiva">+5,00%</td>
-        </tr>
-      </tbody>
-    </table>
+      <!-- ================= COLUNA DA DIREITA ================= -->
+      <aside class="coluna-lateral">
+        
+        <!-- Card de Troca Rápida -->
+        <div class="quick-shortcut-swap">
+          <h4 class="shortcut-title">Troca Rápida</h4>
 
-    <article class="noticias">
-      <h2>Pricípais Notícias</h2>
-      <div class="noticia">
-        <img
-          src="./assets/images/noticia1.jpg"
-          alt="Notícia 1"
-        />
-        <h3>Inflação Global em Alta</h3>
-        <p>
-          A inflação global continua a subir, impactando os mercados de câmbio
-          e as taxas de juros em todo o mundo.
-        </p>
-      </div>
-      <div class="noticia">
-        <img
-          src="./assets/images/noticia2.jpg"
-          alt="Notícia 2"
-        />
-        <h3>Banco Central dos EUA Eleva Taxa de Juros</h3>
-        <p>
-          O Federal Reserve dos EUA anunciou um aumento na taxa de juros, afetando
-          o valor do dólar e as relações cambiais globais.
-        </p>
-      </div>
-      <div class="noticia">
-        <img
-          src="./assets/images/noticia3.jpg"
-          alt="Notícia 3"
-        />
-        <h3>Criptomoedas em Alta</h3>
-        <p>
-          O mercado de criptomoedas está em alta, com o Bitcoin e outras moedas digitais
-          ganhando valor e atraindo investidores.
-        </p>
-      </div>
-    </article>
+          <div class="shortcut-item" data-origem="BRL" data-destino="USD">
+            <div class="shortcut-left">
+              <div class="coin-badge">BRL</div>
+              <div class="shortcut-info">
+                <span class="coin-sub-name">Para USD</span>
+              </div>
+            </div>
+            <div class="shortcut-icon">⇅</div>
+          </div>
+        
+          <div class="shortcut-item" data-origem="BRL" data-destino="BTC">
+            <div class="shortcut-left">
+              <div class="coin-badge">BRL</div>
+              <div class="shortcut-info">
+                <span class="coin-sub-name">Para BTC</span>
+              </div>
+            </div>
+            <div class="shortcut-icon">⇅</div>
+          </div>
 
-  </body>
+          <div class="shortcut-item" data-origem="BRL" data-destino="EUR">
+            <div class="shortcut-left">
+              <div class="coin-badge">BRL</div>
+              <div class="shortcut-info">
+                <span class="coin-sub-name">Para EUR</span>
+              </div>
+            </div>
+            <div class="shortcut-icon">⇅</div>
+          </div>
+
+          <div class="shortcut-item" data-origem="BRL" data-destino="GBP">
+            <div class="shortcut-left">
+              <div class="coin-badge">BRL</div>
+              <div class="shortcut-info">
+                <span class="coin-sub-name">Para GBP</span>
+              </div>
+            </div>
+            <div class="shortcut-icon">⇅</div>
+          </div>
+        </div>
+
+        <!-- Seção de Notícias -->
+        <article class="noticias">
+          <h2>Principais Notícias</h2>
+          <div class="noticia">
+            <img src="./assets/images/noticia1.jpg" alt="Notícia 1"/>
+            <h3>Inflação Global em Alta</h3>
+            <p>A inflação global continua a subir, impactando os mercados de câmbio.</p>
+          </div>
+          <div class="noticia">
+            <img src="./assets/images/noticia2.jpg" alt="Notícia 2"/>
+            <h3>Banco Central dos EUA Eleva Juros</h3>
+            <p>O Federal Reserve dos EUA anunciou um aumento na taxa de juros.</p>
+          </div>
+          <div class="noticia">
+            <img src="./assets/images/noticia3.jpg" alt="Notícia 3"/>
+            <h3>Criptomoedas em Alta</h3>
+            <p>O mercado de criptomoedas está em alta, atraindo investidores.</p>
+          </div>
+        </article>
+
+      </aside>
+
+    </div> <!-- Fim do dashboard-layout -->
+
+</body>
+
 
   <script src="./script.js"></script>
 </html>
