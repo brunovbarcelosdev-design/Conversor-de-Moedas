@@ -60,10 +60,6 @@
             <label> Moeda de origem </label>
             <select id="moedaOrigem">
               <option value="BRL">R$ Real Brasileiro</option>
-              <option value="USD">US$ Dólar Americano</option>
-              <option value="EUR">€ Euro</option>
-              <option value="GBP">£ Libra Esterlina</option>
-              <option value="BTC">₿ Bitcoin</option>
             </select>
           </div>
 
@@ -72,11 +68,10 @@
           <div class="input-group">
             <label> Moeda de destino </label>
             <select id="moedaDestino">
-              <option value="BRL">R$ Real Brasileiro</option>
               <option value="USD">US$ Dólar Americano</option>
+              <option value="BTC">₿ Bitcoin</option>
               <option value="EUR">€ Euro</option>
               <option value="GBP">£ Libra Esterlina</option>
-              <option value="BTC">₿ Bitcoin</option>
             </select>
           </div>
 
@@ -89,7 +84,7 @@
           
           <div id="resultado" class="resultado box" >
             <div class="moeda-bloco">
-              <img src="./assets/images/real.png" id="badeiraorigem" alt="Bandeira Origem"/>
+              <img src="./assets/img/real.png" id="badeiraorigem" alt="Bandeira Origem"/>
               <span class="nome-moeda" id="nomeOrigem">Real</span>
               <output class="valor-moeda" id="valorOriginal">R$ 0,00</output>
             </div>  
@@ -97,7 +92,7 @@
             <div class="seta">⬇</div>
 
             <div class="moeda-bloco">
-              <img src="./assets/images/dolar.png" id="bandeiradestino" alt="Bandeira Destino"/>
+              <img src="./assets/img/dolar.png" id="bandeiradestino" alt="Bandeira Destino"/>
               <span class="nome-moeda" id="nomeDestino">Dólar Americano</span>
               <output class="valor-moeda" id="valorConvertido">$ 0,00</output>
               <p id="ultimaAtualizacao">Taxa de atualização em: 29/05/2026 21:05</p>
@@ -215,5 +210,5 @@
 </body>
 
 
-  <script src="./script.js"></script>
+  <script src="./assets/js/script.js"></script>
 </html>
