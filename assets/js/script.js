@@ -1,4 +1,4 @@
-// Select elements from DOM
+// Selecionar elementos do DOM
 const convertButton = document.querySelector("#convertButton");
 const selectOrigem = document.querySelector("#moedaOrigem");
 const selectDestino = document.querySelector("#moedaDestino");
@@ -13,7 +13,7 @@ const labelUltimaAtualizacao = document.querySelector("#ultimaAtualizacao");
 const invertButton = document.querySelector(".invert-button");
 const shortcutItems = document.querySelectorAll(".shortcut-item");
 
-// Default quotes in case API is offline
+// Cotações padrão caso a API esteja offline
 let quotes = {
   BRL: 1.0,
   USD: 5.25,
@@ -22,7 +22,7 @@ let quotes = {
   BTC: 370000.0
 };
 
-// Flags mapped to currencies
+// Bandeiras associadas a moedas
 const images = {
   BRL: "./assets/img/real.png",
   USD: "./assets/img/dolar.png",
@@ -31,7 +31,7 @@ const images = {
   BTC: "./assets/img/bitcoin.png"
 };
 
-// Currencies display names
+// Nomes de exibição das moedas
 const currencyNames = {
   BRL: "Real Brasileiro",
   USD: "Dólar Americano",
@@ -40,7 +40,7 @@ const currencyNames = {
   BTC: "Bitcoin"
 };
 
-// Currency Formatting configs
+// Configurações de formatação de moeda
 const currencyFormats = {
   BRL: { locale: "pt-BR", options: { style: "currency", currency: "BRL" } },
   USD: { locale: "en-US", options: { style: "currency", currency: "USD" } },
@@ -48,7 +48,7 @@ const currencyFormats = {
   GBP: { locale: "en-GB", options: { style: "currency", currency: "GBP" } }
 };
 
-// Function to fetch real-time quotes
+// Função para obter cotações em tempo real
 async function fetchQuotes() {
   try {
     const response = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,GBP-BRL,BTC-BRL");
@@ -56,16 +56,16 @@ async function fetchQuotes() {
     
     const data = await response.json();
     
-    // Update our quotes object with API data
+    // Atualize nosso objeto de cotações com dados da API.
     quotes.USD = parseFloat(data.USDBRL.bid);
     quotes.EUR = parseFloat(data.EURBRL.bid);
     quotes.GBP = parseFloat(data.GBPBRL.bid);
-    quotes.BTC = parseFloat(data.BTCBRL.bid) * 1000; // AwesomeAPI BTC rates are usually returned normalized
+    quotes.BTC = parseFloat(data.BTCBRL.bid) * 1000; // As taxas de BTC da AwesomeAPI geralmente são retornadas normalizadas.
 
-    // Update cotações table and variação in the UI
+    // Atualizar tabela de cotações e variação na UI
     updateTable(data);
     
-    // Update timestamp
+    // Atualizar carimbo de data/hora
     const now = new Date();
     const formattedDate = now.toLocaleDateString("pt-BR") + " " + now.toLocaleTimeString("pt-BR", { hour: '2-digit', minute: '2-digit' });
     labelUltimaAtualizacao.innerHTML = `Taxa de atualização em: ${formattedDate}`;
@@ -75,7 +75,7 @@ async function fetchQuotes() {
   }
 }
 
-// Function to update the exchange rates table dynamically
+// Função para atualizar a tabela de taxas de câmbio dinamicamente      
 function updateTable(data) {
   const tableRows = document.querySelectorAll(".tabela-cotacoes tbody tr");
   
@@ -92,7 +92,7 @@ function updateTable(data) {
       row.cells[1].innerHTML = formattedBid;
       variationCell.innerHTML = `${sign}${pctChange.toFixed(2)}%`;
       
-      // Update styling class for variation
+      // Atualizar classe de estilo para variação positiva ou negativa
       if (pctChange >= 0) {
         variationCell.className = "variacao positiva";
       } else {
@@ -104,7 +104,7 @@ function updateTable(data) {
     updateRow(tableRows[1], "EURBRL", "Euro", "EUR");
     updateRow(tableRows[2], "GBPBRL", "Libra Esterlina", "GBP");
     
-    // Special formatting for Bitcoin in table
+    // Formatação especial para Bitcoin em tabela
     const btcBid = parseFloat(data.BTCBRL.bid) * 1000;
     const btcPct = parseFloat(data.BTCBRL.pctChange);
     const formattedBtcBid = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(btcBid);
@@ -116,7 +116,7 @@ function updateTable(data) {
   }
 }
 
-// Function to format values correctly based on currency
+// Função para formatar valores corretamente com base na moeda
 function formatValue(value, currency) {
   if (currency === "BTC") {
     return `₿ ${value.toFixed(8)}`;
@@ -125,7 +125,7 @@ function formatValue(value, currency) {
   return new Intl.NumberFormat(config.locale, config.options).format(value);
 }
 
-// Core conversion logic
+// Lógica de conversão principal
 function convertValue() {
   const amount = parseFloat(inputValor.value);
   
@@ -146,7 +146,7 @@ function convertValue() {
     amountInBRL = amount * quotes[from];
   }
 
-  // Convert from BRL to target currency
+  // Converter de BRL para a moeda de destino
   let convertedAmount;
   if (to === "BRL") {
     convertedAmount = amountInBRL;
@@ -154,21 +154,21 @@ function convertValue() {
     convertedAmount = amountInBRL / quotes[to];
   }
 
-  // Render values
+  // Renderizar valores
   valorOriginal.innerHTML = formatValue(amount, from);
   valorConvertido.innerHTML = formatValue(convertedAmount, to);
 }
 
-// Update layout, flags, text, and trigger conversion
+// Atualizar layout, bandeiras, texto e acionar conversão
 function updateCurrencyDetails() {
   const from = selectOrigem.value;
   const to = selectDestino.value;
 
-  // Update flags
+  // Atualizar sinalizadores
   if (bandeiraOrigem) bandeiraOrigem.src = images[from];
   if (bandeiraDestino) bandeiraDestino.src = images[to];
 
-  // Update names
+  // Atualizar nomes
   if (nomeOrigem) nomeOrigem.innerHTML = currencyNames[from];
   if (nomeDestino) nomeDestino.innerHTML = currencyNames[to];
 
@@ -176,7 +176,7 @@ function updateCurrencyDetails() {
   convertValue();
 }
 
-// Invert/Swap Currencies function
+// Função para inverter/trocar moedas'
 function swapCurrencies() {
   const temp = selectOrigem.value;
   selectOrigem.value = selectDestino.value;
@@ -185,7 +185,7 @@ function swapCurrencies() {
   updateCurrencyDetails();
 }
 
-// Shortcut triggers
+// Gatilhos de atalho
 function applyShortcut(event) {
   const item = event.currentTarget;
   const from = item.dataset.origem || "BRL";
@@ -197,7 +197,7 @@ function applyShortcut(event) {
   updateCurrencyDetails();
 }
 
-// Event Listeners
+// Ouvintes de eventos
 convertButton.addEventListener("click", convertValue);
 selectOrigem.addEventListener("change", updateCurrencyDetails);
 selectDestino.addEventListener("change", updateCurrencyDetails);
@@ -208,7 +208,7 @@ shortcutItems.forEach(item => {
   item.addEventListener("click", applyShortcut);
 });
 
-// Run setup on load
+// Execute a configuração no carregamento da página
 window.addEventListener("DOMContentLoaded", () => {
   fetchQuotes();
   updateCurrencyDetails();
